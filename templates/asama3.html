@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>İki Sayfa Arasındaki Benzerlik Skorlaması</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+
+<div class="container d-flex h-100">
+    <div class="row align-self-center w-100">
+        <div class="col-6 mx-auto">
+            <div class="jumbotron">
+                <h5 class="display-6 text-center">İki Sayfa Arasındaki Benzerlik Skorlaması</h5>
+
+                <form method="post" action="/islem3">
+                    <div class="form-group">
+                        <div class="row">
+                              <div class="col-md-12">
+                                <input type="text" style="width:100%" class="text-center" name="birinciLink" placeholder="1. URL'yi giriniz."/>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                              <div class="col-md-12">
+                                <input type="text" style="width:100%" class="text-center" name="ikinciLink" placeholder="2. URL'yi giriniz."/>
+                              </div>
+                        </div>
+                    </div>
+
+
+                     <div class="form-group">
+                        <div class="row">
+                              <div class="col-md-12">
+                                    <input type="submit" style="width:100%" name="button" value="Gonder"/></input>
+                              </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>

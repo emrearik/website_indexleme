@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yazılım Laboratuvarı Dersi Proje Ödevi</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+</head>
+<body>
+<div class="container d-flex h-100">
+    <div class="row align-self-center w-100">
+        <div class="col-6 mx-auto">
+            <div class="jumbotron">
+                <h3 class="display-6 text-center">Yazılım Laboratuvarı Projesi 1</h3>
+                <p class="lead text-center">Emre ARIK - Halim Ahat AKTURAN</p>
+                <p class="lead text-center">
+                    <a onclick="window.location.href='asama1'" class="btn btn-primary">Sayfada Geçen Kelimelerin Frekanslarını Hesaplama</a>
+                    <a onclick="window.location.href='asama2'" class="btn btn-success mt-2">Anahtar Kelime Çıkarma</a>
+                    <a onclick="window.location.href='asama3'" class="btn btn-danger mt-2">İki Sayfa (URL) Arasındaki Benzerlik Skorlaması</a>
+                    <a onclick="window.location.href='asama4'" class="btn btn-warning mt-2">Site İndexleme ve Sıralama</a>
+                    <a onclick="window.location.href='asama5'" class="btn btn-info mt-2">Semantik Analiz</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>

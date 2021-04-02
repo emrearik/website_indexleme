@@ -1,0 +1,49 @@
+html, body {
+  height: 100%;
+  width:100%;
+}
+
+
+.container {
+  height: 100%;
+  min-height: 100%;
+}
+
+.box{
+    height:100vh;
+}
+
+table {
+    width:100%;
+}
+
+.anahtar-table:nth-child(1),.anahtar-table:nth-child(2),.anahtar-table:nth-child(3),.anahtar-table:nth-child(4),
+.anahtar-table:nth-child(5),.anahtar-table:nth-child(6),.anahtar-table:nth-child(7),.anahtar-table:nth-child(8),
+.anahtar-table:nth-child(9),.anahtar-table:nth-child(10){
+    font-weight:bold;
+    background-color:#f0f0f0;
+}
+
+.kesir {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    letter-spacing: 0.001em;
+    text-align: center;
+}
+.kesir > span {
+    display: block;
+    padding: 0.1em;
+}
+.kesir span.payda {
+    border-top: thin solid black;
+}
+.kesir span.kesirsembolu {
+    display: none;
+}
+.derinlik-2{
+    background-color:#FF957E;
+}
+.derinlik-3{
+    background-color:#FFEF7E;
+}

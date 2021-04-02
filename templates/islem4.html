@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Site Indexleme ve Sıralama</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container d-flex h-100 mt-5">
+        <div class="col-12">
+            <h5 class="display-6 text-center">Site İndexleme ve Sıralama</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="lead text-center" style="word-wrap:break;">Ana Link : {{ anaLink }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="lead text-center" style="word-wrap:break;">URL Kümesi : {{ urlKumesi }}</p>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#ortakKelimeler" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        Alt Linkler ve Derinlikleri
+                    </a>
+                    <a class="btn btn-warning" href="/" role="button">
+                        Anasayfaya Dön
+                    </a>
+                </p>
+
+                <div class="collapse" id="ortakKelimeler">
+                    <div class="card card-body">
+                        <div class="table table-responsive w-100 d-block d-md-table">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Alt Link</th>
+                                        <th scope="col">Derinlik</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for key,value in urlKumesiAltLinkler.items()%}
+                                    <tr class="derinlik-{{value}}">
+                                        <td>
+                                            <p style="width:500px;word-wrap: break-word;">{{key}}</p>
+                                        </td>
+                                        <td>
+                                            <p style="width:500px;word-wrap: break-word;">{{value}}</p>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="table table-responsive w-100 d-block d-md-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Site</th>
+                                <th scope="col">Ana Link Kelime Sayısı</th>
+                                <th scope="col">Site Kelime Sayısı</th>
+                                <th scope="col">Ortak Kelime Sayısı</th>
+                                <th scope="col">Karşılaştırma Hesabı</th>
+                                <th scope="col">Karşılaştırma Sonucu</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for sonuc in tumSonuclar%}
+                            <tr>
+                                <td>
+                                    <p style="width:500px;word-wrap: break-word;">{{sonuc["ikinciLink"]}}</p>
+                                </td>
+                                <td>
+                                    <p style="width:50px;word-wrap: break-word;">
+                                        {{sonuc["birinciSayfaKelimeSayisi"]}}</p>
+                                </td>
+                                <td>
+                                    <p style="width:50px;word-wrap: break-word;">
+                                        {{sonuc["ikinciSayfaKelimeSayisi"]}}</p>
+                                </td>
+                                <td>
+                                    <p style="width:50px;word-wrap: break-word;">{{sonuc["ortakKelimeSayisi"]}}</p>
+                                </td>
+                                <td>
+                                    <p style="width:150px;word-wrap: break-word;">
+                                        <div class="text-center">
+                                            <div class="kesir">
+                                                <span>
+                                                    <div class="kesir">
+                                                        <span
+                                                            style="font-size:12px">{{sonuc["ortakKelimeSayisi"]}}</span>
+                                                        <span class="kesirsembolu">/</span>
+                                                        <span class="payda"
+                                                            style="font-size:12px">{{sonuc["birinciSayfaKelimeSayisi"]}}</span>
+                                                    </div>
+                                                    +
+                                                    <div class="kesir">
+                                                        <span
+                                                            style="font-size:12px">{{sonuc["ortakKelimeSayisi"]}}</span>
+                                                        <span class="kesirsembolu">/</span>
+                                                        <span class="payda"
+                                                            style="font-size:12px">{{sonuc["ikinciSayfaKelimeSayisi"]}}</span>
+                                                    </div>
+
+                                                </span>
+                                                <span class="kesirsembolu">/</span>
+                                                <span class="payda" style="font-size:12px">2</span>
+                                            </div>
+
+                                            =
+
+                                            <span id="islemSonucu"
+                                                style="font-size:12px">%{{sonuc["karsilastirmaSonucu"]}}</span>
+                                        </div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p style="width:150px;word-wrap: break-word;">
+
+                                        <div class="text-center">
+                                            <div class="progress center-block">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                    role="progressbar" style="width: {{sonuc["karsilastirmaSonucu"]}}%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</html>

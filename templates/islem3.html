@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>İki Sayfa Arasındaki Benzerlik Skorlaması</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container d-flex h-100 mt-5">
+        <div class="col-12">
+            <h5 class="display-6 text-center">İki Sayfa Arasındaki Benzerlik Skorlaması</h5>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <div class="kesir">
+                            <span>
+                                <div class="kesir">
+                                    <span>{{ ayniKelimeler|length }}</span>
+                                    <span class="kesirsembolu">/</span>
+                                    <span class="payda">{{ birinciLinkKelimeler|length }}</span>
+                                </div>
+                                +
+                                <div class="kesir">
+                                    <span>{{ ayniKelimeler|length }}</span>
+                                    <span class="kesirsembolu">/</span>
+                                    <span class="payda">{{ ikinciLinkKelimeler|length }}</span>
+                                </div>
+
+                            </span>
+                            <span class="kesirsembolu">/</span>
+                            <span class="payda">2</span>
+                        </div>
+
+                        =
+
+                        <span id="islemSonucu">% {{ karsilastirmaSonucu }}</span>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                            aria-valuenow='0' aria-valuemin="0" aria-valuemax="100" style="width: {{ karsilastirmaSonucu }}%"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="lead text-center" style="word-wrap:break;">1.Link : {{ birinciLink }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="lead text-center" style="word-wrap:break;">2.Link : {{ ikinciLink }}</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#ortakKelimeler" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        Ortak Kelimeler
+                    </a>
+                    <a class="btn btn-warning" href="/" role="button">
+                        Anasayfaya Dön
+                    </a>
+                </p>
+
+                <div class="collapse" id="ortakKelimeler">
+                    <div class="card card-body">
+                        <div class="table table-responsive w-100 d-block d-md-table">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Kelime</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for key,value in ayniKelimeler.items()%}
+                                    <tr class="anahtar-table">
+                                        <td>
+                                            <p style="width:1000px;word-wrap: break-word;">{{key}}</p>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="table table-responsive w-100 d-block d-md-table">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Kelime</th>
+                                        <th scope="col">Sayısı</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for key,value in birinciLinkKelimeler.items()%}
+                                    <tr class="anahtar-table">
+                                        <td>
+                                            <p style="width:400px;word-wrap: break-word;">{{key}}</p>
+                                        </td>
+                                        <td>
+                                            <p style="width:100px;word-wrap: break-word;">{{value}}</p>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="table table-responsive w-100 d-block d-md-table ml-5" style="overflow:hidden">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Kelime</th>
+                                        <th scope="col">Sayısı</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for key,value in ikinciLinkKelimeler.items()%}
+                                    <tr class="anahtar-table">
+                                        <td>
+                                            <p style="width:400px;word-wrap: break-word;">{{key}}</p>
+                                        </td>
+                                        <td>
+                                            <p style="width:100px;word-wrap: break-word;">{{value}}</p>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center"><a href="/" class="btn btn-primary">Anasayfaya Dön</a></p>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</html>
