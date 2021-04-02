@@ -1,3 +1,5 @@
+Detaylı açıklama için proje raporunu inceleyebilirsiniz.
+
 Projenin çalışması için;
 1. İlk olarak masaüstünde bir klasör oluşturun. Örneğin bu klasörün ismi yazlab2.1 olsun
 2. Sonrasında cmd yi açıp pip modülünü aşağıdaki komutla upgrade edin.
